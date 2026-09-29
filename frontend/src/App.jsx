@@ -34,7 +34,7 @@ function App() {
     setError('');
 
     try {
-      const response = await fetch('http://127.0.0.1:8002/api/generate-docs', {
+      const response = await fetch('https://repodoc-backend.onrender.com/api/generate-docs', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ repo_url: targetUrl, mode: selectedMode, user_feedback: customFeedback }),
