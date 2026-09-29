@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+gitpython
+langchain
+langchain-google-genai
+pydantic
+python-dotenv
+requests
+tree-sitter

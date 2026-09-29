@@ -1,0 +1,59 @@
+{
+    "file_tree": [
+        ".gitignore",
+        "eslint.config.js",
+        "index.html",
+        "package-lock.json",
+        "package.json",
+        "postcss.config.js",
+        "README.md",
+        "tailwind.config.js",
+        "vite.config.js",
+        "public\\arrow.png",
+        "public\\express.png",
+        "public\\favicon.svg",
+        "public\\framer.png",
+        "public\\groq.png",
+        "public\\icon.png",
+        "public\\img.png",
+        "public\\langchain.png",
+        "public\\lightbulb.png",
+        "public\\llama.png",
+        "public\\mongo.png",
+        "public\\node.png",
+        "public\\rag.png",
+        "public\\react.png",
+        "public\\vector.png",
+        "src\\App.css",
+        "src\\App.jsx",
+        "src\\index.css",
+        "src\\main.jsx",
+        "src\\Components\\Button.jsx",
+        "src\\Components\\CustomScrollbar.jsx",
+        "src\\Components\\Flow.jsx",
+        "src\\Components\\FooterCTA.jsx",
+        "src\\Components\\Navbar.jsx",
+        "src\\Components\\NeuralParticles.jsx",
+        "src\\Components\\Plasma.jsx",
+        "src\\Components\\StraightAnglePieChart.jsx",
+        "src\\Context\\Firebase.jsx",
+        "src\\Pages\\About.jsx",
+        "src\\Pages\\Homepage.jsx",
+        "src\\Pages\\Login.jsx",
+        "src\\Pages\\Oracle.jsx",
+        "src\\Pages\\Profile.jsx"
+    ],
+    "tech_stack": [
+        "Node.js / JavaScript",
+        "React"
+    ],
+    "env_vars": [],
+    "key_file_contents": {
+        "package.json": "{\n  \"name\": \"21-leetoai\",\n  \"private\": true,\n  \"version\": \"0.0.0\",\n  \"type\": \"module\",\n  \"scripts\": {\n    \"dev\": \"vite\",\n    \"build\": \"vite build\",\n    \"lint\": \"eslint .\",\n    \"preview\": \"vite preview\"\n  },\n  \"dependencies\": {\n    \"@recharts/devtools\": \"^0.0.11\",\n    \"firebase\": \"^12.11.0\",\n    \"framer-motion\": \"^12.38.0\",\n    \"gsap\": \"^3.14.2\",\n    \"lucide-react\": \"^0.577.0\",\n    \"ogl\": \"^1.0.11\",\n    \"react\": \"^19.2.4\",\n    \"react-dom\": \"^19.2.4\",\n    \"react-router-dom\": \"^7.13.1\",\n    \"recharts\": \"^3.8.0\"\n  },\n  \"devDependencies\": {\n    \"@eslint/js\": \"^9.39.4\",\n    \"@types/react\": \"^19.2.14\",\n    \"@types/react-dom\": \"^19.2.3\",\n    \"@vitejs/plugin-react\": \"^6.0.1\",\n    \"autoprefixer\": \"^10.4.27\",\n    \"eslint\": \"^9.39.4\",\n    \"eslint-plugin-react-hooks\": \"^7.0.1\",\n    \"eslint-plugin-react-refresh\": \"^0.5.2\",\n    \"globals\": \"^17.4.0\",\n    \"postcss\": \"^8.5.8\",\n    \"react-icons\": \"^5.6.0\",\n    \"tailwindcss\": \"^3.4.19\",\n    \"vite\": \"^8.0.1\"\n  }\n}\n"
+    },
+    "code_snippets": [
+        "--- File: src\\Components\\FooterCTA.jsx ---\nimport React, { useState, useEffect } from 'react';\nimport { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';\nimport { TbBrandGithub, TbBrandLinkedin, TbRocket } from \"react-icons/tb\";\n\nconst techStack = [\n    { name: \"MongoDB\", image: \"/mongo.png\" },\n    { name: \"Express\", image: \"/express.png\" },\n    { name: \"Node.js\", image: \"/node.png\" },\n    { name: \"React\", image: \"/react.png\" },\n    { name: \"Groq API\", image: \"/groq.png\" },\n    { name: \"LLaMA 3.1\", image: \"/llama.png\" },\n    { name: \"Framer Motion\", image: \"/framer.png\" },\n    { name: \"Langchain\" , image : \"langchain.png\"},\n    { name: \"RAG\" , image : \"/rag.png\"},\n    { name: \"Vector Database\" , image : \"/vector.png\"},\n\n]; \n\nconst FooterCTA = () => {\n    const [hoveredTech, setHoveredTech] = useState(null);\n\n    const mouseX = useMotionValue(0);\n    const mouseY = useMotionValue(0);\n\n    const springX = useSpring(mouseX, { stiffness: 150, damping: 15 });\n    const springY = useSpring(mouseY, { stiffness",
+        "--- File: src\\Context\\Firebase.jsx ---\nimport { createContext, useContext } from \"react\";\nimport { initializeApp } from 'firebase/app';\nimport { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword , GoogleAuthProvider , signInWithPopup} from 'firebase/auth';\n\n// 1. Create the Context\nconst firebaseContext = createContext(null);\n\n// 2. Create the Custom Hook (Fixed!)\nexport const useFirebase = () => useContext(firebaseContext);\nconst googleProvider = new GoogleAuthProvider();\n\n// 3. Setup Firebase Config\nconst firebaseConfig = {\n  apiKey: \"AIzaSyCglYwJ3bxXyhEt8kH-MpKFv4WJ6jXOmss\",\n  authDomain: \"leetoai.firebaseapp.com\",\n  databaseURL: \"https://leetoai-default-rtdb.firebaseio.com\",\n  projectId: \"leetoai\",\n  storageBucket: \"leetoai.firebasestorage.app\",\n  messagingSenderId: \"385931872411\",\n  appId: \"1:385931872411:web:26f0c517b831a948ec5e3e\"\n};\n\nconst firebaseApp = initializeApp(firebaseConfig);\nconst firebaseAuth = getAuth(firebaseApp);\n\n// 4. Create the Provider Component\nexport const FirebaseProvider = (pro",
+        "--- File: src\\Pages\\Login.jsx ---\nimport React, { useState , useEffect} from 'react';\nimport NeuralParticles from '../Components/NeuralParticles';\nimport { TbMail, TbLock, TbRobot, TbArrowRight } from \"react-icons/tb\";\nimport { FaGoogle } from \"react-icons/fa\";\nimport { useFirebase } from '../Context/Firebase.jsx'; \n\n\nconst Login = () => {\n  const firebase = useFirebase(); // Getting our context functions\n  \n  const [isLogin, setIsLogin] = useState(true);\n  const [email, setEmail] = useState('');\n  const [password, setPassword] = useState('');\n  const [errorMsg, setErrorMsg] = useState('');\n  const [isLoading, setIsLoading] = useState(false);\n\n  const handleAuth = async (e) => {\n    e.preventDefault();\n    setErrorMsg('');\n    setIsLoading(true);\n\n    try {\n        if (isLogin) {\n            // Calling the function from our Context\n            await firebase.loginEmail(email, password);\n            alert(\"Oracle Access Granted. Welcome back to the Forge!\");\n        } else {\n            // Calling the function from our "
+    ]
+}
